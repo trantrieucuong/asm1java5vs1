@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Chi Tiết Sản Phẩm</title>
+    <!-- Link CSS Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Thêm mới Chi Tiết Sản Phẩm</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/chitietsanpham/add" method="post" th:action="@{/chitietsanpham/add}" th:object="${chiTietSanPham}">
+                        <div class="form-group">
+                            <label for="sanPhamId">ID Sản Phẩm:</label>
+                            <input type="text" class="form-control" id="sanPhamId" name="sanPham.id" th:field="*{sanPham.id}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mauSacId">ID Màu Sắc:</label>
+                            <input type="text" class="form-control" id="mauSacId" name="mauSac.id" th:field="*{mauSac.id}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sizeId">ID Size:</label>
+                            <input type="text" class="form-control" id="sizeId" name="size.id" th:field="*{size.id}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="giaBan">Giá Bán:</label>
+                            <input type="number" class="form-control" id="giaBan" name="giaBan" th:field="*{giaBan}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="soLuongTon">Số Lượng Tồn:</label>
+                            <input type="number" class="form-control" id="soLuongTon" name="soLuongTon" th:field="*{soLuongTon}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trangThai">Trạng Thái:</label>
+                            <input type="text" class="form-control" id="trangThai" name="trangThai" th:field="*{trangThai}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- REQUIRED SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

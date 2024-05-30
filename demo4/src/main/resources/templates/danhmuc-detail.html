@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục Detail</title>
+    <!-- Link CSS Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Danh mục Detail</h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">ID:</dt>
+                        <dd class="col-sm-9" th:text="${danhMuc.id}"></dd>
+
+                        <dt class="col-sm-3">Mã Danh mục:</dt>
+                        <dd class="col-sm-9" th:text="${danhMuc.maDanhMuc}"></dd>
+
+                        <dt class="col-sm-3">Tên Danh mục:</dt>
+                        <dd class="col-sm-9" th:text="${danhMuc.tenDanhMuc}"></dd>
+
+                        <dt class="col-sm-3">Trạng Thái:</dt>
+                        <dd class="col-sm-9" th:text="${danhMuc.trangThai}"></dd>
+
+                        <dt class="col-sm-3">Ngày Tạo:</dt>
+                        <dd class="col-sm-9" th:text="${danhMuc.ngayTao}"></dd>
+
+                        <dt class="col-sm-3">Ngày Sửa:</dt>
+                        <dd class="col-sm-9" th:text="${danhMuc.ngaySua}"></dd>
+                    </dl>
+                    <!-- Nút Update -->
+                    <a th:href="@{/danhmuc/update/{id}(id=${danhMuc.id})}" class="btn btn-primary">Update</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update MauSac</title>
+    <!-- Link CSS Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Update MauSac</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Form cập nhật thông tin màu sắc -->
+                    <form th:action="@{/mausac/update/{id}(id=${mauSac.id})}" method="post">
+                        <div class="form-group">
+                            <label for="tenMau">Tên Màu:</label>
+                            <input type="text" class="form-control" id="tenMau" name="tenMau" th:value="${mauSac.tenMau}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="maMau">Mã Màu:</label>
+                            <input type="text" class="form-control" id="maMau" name="maMau" th:value="${mauSac.maMau}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trangThai">Trạng Thái:</label>
+                            <input type="text" class="form-control" id="trangThai" name="trangThai" th:value="${mauSac.trangThai}" required>
+                        </div>
+                        <!-- Nút Submit -->
+                        <button type="submit" class="btn btn-primary btn-block">Update</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm Detail</title>
+    <!-- Link CSS Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Chi Tiết Sản Phẩm</h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">ID:</dt>
+                        <dd class="col-sm-9" th:text="${sanPham.id}"></dd>
+
+                        <dt class="col-sm-3">Mã Sản Phẩm:</dt>
+                        <dd class="col-sm-9" th:text="${sanPham.maSanPham}"></dd>
+
+                        <dt class="col-sm-3">Tên Sản Phẩm:</dt>
+                        <dd class="col-sm-9" th:text="${sanPham.tenSanPham}"></dd>
+
+                        <dt class="col-sm-3">Trạng Thái:</dt>
+                        <dd class="col-sm-9" th:text="${sanPham.trangThai}"></dd>
+
+                        <dt class="col-sm-3">Ngày Tạo:</dt>
+                        <dd class="col-sm-9" th:text="${sanPham.ngayTao}"></dd>
+
+                        <dt class="col-sm-3">Ngày Sửa:</dt>
+                        <dd class="col-sm-9" th:text="${sanPham.ngaySua}"></dd>
+
+                        <!-- Thêm phần hiển thị danh mục -->
+                        <dt class="col-sm-3">Danh Mục:</dt>
+                        <dd class="col-sm-9" th:text="${sanPham.doanhMuc.tenDanhMuc}"></dd>
+                    </dl>
+                    <!-- Nút Update -->
+                    <a th:href="@{/sanpham/update/{id}(id=${sanPham.id})}" class="btn btn-primary">Cập Nhật</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

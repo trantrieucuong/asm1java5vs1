@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Danh mục</title>
+  <!-- Link CSS Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center">Update Danh mục</h2>
+        </div>
+        <div class="card-body">
+          <!-- Form cập nhật thông tin danh mục -->
+          <form th:action="@{/chitietsanpham/update/{id}(id=${chiTietSanPham.id})}" method="post">
+            <input type="hidden" id="id" name="id" th:value="${chiTietSanPham.id}">
+            <div class="form-group">
+              <label for="sanPhamId">ID Sản phẩm:</label>
+              <input type="number" class="form-control" id="sanPhamId" name="sanPhamId" th:value="${chiTietSanPham.sanPham.id}" required>
+            </div>
+            <div class="form-group">
+              <label for="mauSacId">ID Màu sắc:</label>
+              <input type="number" class="form-control" id="mauSacId" name="mauSacId" th:value="${chiTietSanPham.mauSac.id}" required>
+            </div>
+            <div class="form-group">
+              <label for="sizeId">ID Size:</label>
+              <input type="number" class="form-control" id="sizeId" name="sizeId" th:value="${chiTietSanPham.size.id}" required>
+            </div>
+            <div class="form-group">
+              <label for="giaBan">Giá bán:</label>
+              <input type="text" class="form-control" id="giaBan" name="giaBan" th:value="${chiTietSanPham.giaBan}" required>
+            </div>
+            <div class="form-group">
+              <label for="soLuongTon">Số lượng tồn:</label>
+              <input type="number" class="form-control" id="soLuongTon" name="soLuongTon" th:value="${chiTietSanPham.soLuongTon}" required>
+            </div>
+            <div class="form-group">
+              <label for="trangThai">Trạng thái:</label>
+              <input type="text" class="form-control" id="trangThai" name="trangThai" th:value="${chiTietSanPham.trangThai}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

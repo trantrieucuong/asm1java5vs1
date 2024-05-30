@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminLTE Dashboard</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css">
+    <style>
+        @media (max-width: 991.98px) {
+            .content-wrapper {
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .main-footer {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="fas fa-user"></i>
+                    <span class="hidden-xs">Admin</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">Tài khoản</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-cog mr-2"></i> Cài đặt
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Đăng xuất
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="#" class="brand-link">
+            <span class="brand-text font-weight-light">AdminLTE</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="/khachhang/list" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Khách hàng
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/sanpham/list" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                sản phẩm
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                doanh mục
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/hoadon/list" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                hóa đơn
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                hóa đơn chi tiết
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/chitietsanpham/list" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                chi tiết sản phẩm
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/mausac/list" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                màu sắc
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/size/list" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                size
+                            </p>
+                        </a>
+                    </li>
+                    <!-- Add more sidebar links as needed -->
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <!-- Your page content here -->
+            <div class="col-md-12">
+                <h1>Danh sách Danh mục</h1>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã Danh mục</th>
+                            <th>Tên Danh mục</th>
+                            <th>Trạng thái</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày sửa</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="danhMuc, i : ${danhMucs}">
+                            <td th:text="${i.count}"></td>
+                            <td th:text="${danhMuc.maDanhMuc}"></td>
+                            <td th:text="${danhMuc.tenDanhMuc}"></td>
+                            <td th:text="${danhMuc.trangThai}"></td>
+                            <td th:text="${danhMuc.ngayTao}"></td>
+                            <td th:text="${danhMuc.ngaySua}"></td>
+                            <td>
+                                <a th:href="@{/danhmuc/delete/{id}(id=${danhMuc.id})}">
+                                    <button type="button" class="btn btn-danger">Delete</button>
+                                </a>
+                                <a th:href="@{/danhmuc/detail/{id}(id=${danhMuc.id})}">
+                                    <button type="button" class="btn btn-warning">Detail</button>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <div>
+                <!-- Thêm nút Thêm mới dẫn đến trang thêm mới danh mục -->
+                <a href="/danhmuc/add"><button type="button" class="btn btn-danger">Thêm mới</button></a>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Footer text &copy; 2024</strong>
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js"></script>
+</body>
+
+</html>

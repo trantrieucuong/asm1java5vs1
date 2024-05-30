@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add MauSac</title>
+    <!-- Link CSS Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Add New Mau Sac</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/mausac/add" method="post">
+                        <div class="form-group">
+                            <label for="tenMau">Tên Màu:</label>
+                            <input type="text" class="form-control" id="tenMau" name="tenMau" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="maMau">Mã Màu:</label>
+                            <input type="text" class="form-control" id="maMau" name="maMau" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trangThai">Trạng Thái:</label>
+                            <input type="text" class="form-control" id="trangThai" name="trangThai" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

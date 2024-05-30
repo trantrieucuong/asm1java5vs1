@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhachHang Detail</title>
+    <!-- Link CSS Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">KhachHang Detail</h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">ID:</dt>
+                        <dd class="col-sm-9" th:text="${khachHang.id}"></dd>
+
+                        <dt class="col-sm-3">Họ Tên:</dt>
+                        <dd class="col-sm-9" th:text="${khachHang.hoTen}"></dd>
+
+                        <dt class="col-sm-3">Địa Chỉ:</dt>
+                        <dd class="col-sm-9" th:text="${khachHang.diaChi}"></dd>
+
+                        <dt class="col-sm-3">Số Điện Thoại:</dt>
+                        <dd class="col-sm-9" th:text="${khachHang.sdt}"></dd>
+
+                        <dt class="col-sm-3">Trạng Thái:</dt>
+                        <dd class="col-sm-9" th:text="${khachHang.trangThai}"></dd>
+
+                        <dt class="col-sm-3">Ngày Tạo:</dt>
+                        <dd class="col-sm-9" th:text="${khachHang.ngayTao}"></dd>
+
+                        <dt class="col-sm-3">Ngày Sửa:</dt>
+                        <dd class="col-sm-9" th:text="${khachHang.ngaySua}"></dd>
+                    </dl>
+                    <!-- Nút Update -->
+                    <a th:href="@{/khachhang/update/{id}(id=${khachHang.id})}" class="btn btn-primary">Update</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
