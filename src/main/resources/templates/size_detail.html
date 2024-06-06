@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Size Detail</title>
+    <!-- Link CSS Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Size Detail</h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">ID:</dt>
+                        <dd class="col-sm-9" th:text="${size.id}"></dd>
+
+                        <dt class="col-sm-3">Tên Size:</dt>
+                        <dd class="col-sm-9" th:text="${size.tenSize}"></dd>
+
+                        <dt class="col-sm-3">Mã Size:</dt>
+                        <dd class="col-sm-9" th:text="${size.maSize}"></dd>
+
+                        <dt class="col-sm-3">Trạng Thái:</dt>
+                        <dd class="col-sm-9" th:text="${size.trangThai}"></dd>
+
+                        <dt class="col-sm-3">Ngày Tạo:</dt>
+                        <dd class="col-sm-9" th:text="${size.ngayTao}"></dd>
+
+                        <dt class="col-sm-3">Ngày Sửa:</dt>
+                        <dd class="col-sm-9" th:text="${size.ngaySua}"></dd>
+                    </dl>
+                    <!-- Nút Update -->
+                    <a th:href="@{/size/update/{id}(id=${size.id})}" class="btn btn-primary">Update</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

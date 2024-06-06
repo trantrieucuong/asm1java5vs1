@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập Nhật Sản Phẩm</title>
+    <!-- Link CSS Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Cập Nhật Sản Phẩm</h2>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/sanpham/update/{id}(id=${sanPham.id})}" method="post">
+                        <div class="form-group">
+                            <label for="maSanPham">Mã Sản Phẩm:</label>
+                            <input type="text" class="form-control" id="maSanPham" name="maSanPham" th:value="${sanPham.maSanPham}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tenSanPham">Tên Sản Phẩm:</label>
+                            <input type="text" class="form-control" id="tenSanPham" name="tenSanPham" th:value="${sanPham.tenSanPham}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trangThai">Trạng Thái:</label>
+                            <input type="text" class="form-control" id="trangThai" name="trangThai" th:value="${sanPham.trangThai}" readonly>
+                        </div>
+                        <!-- Thêm phần chọn danh mục -->
+                        <div class="form-group">
+                            <label for="danhmuc">id danh muc:</label>
+                            <input type="text" class="form-control" id="danhmuc" name="doanhMuc.id" th:value="${sanPham.doanhMuc.id}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Cập Nhật</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

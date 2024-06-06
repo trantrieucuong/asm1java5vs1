@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Size</title>
+  <!-- Link CSS Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center">Update Size</h2>
+        </div>
+        <div class="card-body">
+          <!-- Form cập nhật thông tin size -->
+          <form th:action="@{/size/update/{id}(id=${size.id})}" method="post">
+            <div class="form-group">
+              <label for="tenSize">Tên Size:</label>
+              <input type="text" class="form-control" id="tenSize" name="tenSize" th:value="${size.tenSize}" required>
+            </div>
+            <div class="form-group">
+              <label for="maSize">Mã Size:</label>
+              <input type="text" class="form-control" id="maSize" name="maSize" th:value="${size.maSize}" required>
+            </div>
+            <div class="form-group">
+              <label for="trangThai">Trạng Thái:</label>
+              <input type="text" class="form-control" id="trangThai" name="trangThai" th:value="${size.trangThai}" required>
+            </div>
+            <!-- Nút Submit -->
+            <button type="submit" class="btn btn-primary btn-block">Update</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

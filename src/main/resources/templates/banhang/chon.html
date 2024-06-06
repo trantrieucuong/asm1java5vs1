@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <style>
+        /* Định dạng các nút */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .button {
+            margin: 10px;
+            padding: 20px;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="button-container">
+    <!-- Button "Bán hàng" -->
+    <a href="/index/add"><button class="button" >Bán hàng</button></a>
+    <!-- Button "Quản lý" -->
+    <a href="/khachhang/list"><button class="button">Quản lý</button></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .cart-icon:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/index/add">Tạo hóa đơn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <!-- Loop through each product detail -->
+        <div class="col-12 col-md-4 mb-4" th:each="sanPhams, i : ${chiTietSanPhams}">
+            <div class="card">
+                <img src="https://koueitrading.com/global/wp-content/uploads/2020/10/noimg-575x380.png" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <div class="product-title">
+                        <strong>Tên sản phẩm: </strong>
+                        <span class="card-title" th:text="${sanPhams.sanPham.tenSanPham}">Product Name</span>
+                    </div>
+                    <div class="product-status">
+                        <strong>Trạng thái: </strong>
+                        <span class="card-text" th:text="${sanPhams.trangThai}">Status</span>
+                    </div>
+                    <div class="product-actions" style="display: none;">
+                        <form action="/hdct/add" method="post">
+                            <input type="hidden" name="hoaDonId" th:value="${hoaDonId}">
+                            <input type="hidden" name="chiTietSanPhamId" th:value="${sanPhams.id}">
+                            <div class="form-group">
+                                <label for="soLuong">Số lượng:</label>
+                                <input type="number" class="form-control" id="soLuong" name="soLuong" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trangThai">Trạng thái:</label>
+                                <input type="text" class="form-control" id="trangThai" name="trangThai" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of loop -->
+    </div>
+</div>
+<!-- Cart Icon -->
+<div class="cart-icon" th:onclick="'window.location.href=\'/banhang/hoadon/view?hoaDonId=' + ${hoaDonId} + '\''">
+    <i class="fas fa-shopping-cart"></i>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.card').hover(
+            function() {
+                $(this).find('.product-actions').show();
+            },
+            function() {
+                $(this).find('.product-actions').hide();
+            }
+        );
+    });
+</script>
+</body>
+</html>

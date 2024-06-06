@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hóa đơn</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2 class="my-4">Hóa đơn</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá bán</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="chiTiet : ${hoaDonChiTiets}">
+            <td th:text="${chiTiet.chiTietSanPham.sanPham.tenSanPham}">Tên sản phẩm</td>
+            <td th:text="${chiTiet.soLuongMua}">Số lượng</td>
+            <td th:text="${chiTiet.giaBan}">Giá bán</td>
+            <td th:text="${chiTiet.tongTien}">Tổng tiền</td>
+            <td th:text="${chiTiet.trangThai}">Trạng thái</td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="javascript:history.back()" class="btn btn-primary">tiếp tục mua</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

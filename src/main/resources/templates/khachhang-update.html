@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update KhachHang</title>
+    <!-- Link CSS Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Update KhachHang</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Form cập nhật thông tin khách hàng -->
+                    <form th:action="@{/khachhang/update/{id}(id=${khachHang.id})}" method="post">
+                        <div class="form-group">
+                            <label for="hoTen">Họ Tên:</label>
+                            <input type="text" class="form-control" id="hoTen" name="hoTen" th:value="${khachHang.hoTen}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="diaChi">Địa Chỉ:</label>
+                            <input type="text" class="form-control" id="diaChi" name="diaChi" th:value="${khachHang.diaChi}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sdt">Số Điện Thoại:</label>
+                            <input type="text" class="form-control" id="sdt" name="sdt" th:value="${khachHang.sdt}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trangThai">Trạng Thái:</label>
+                            <input type="text" class="form-control" id="trangThai" name="trangThai" th:value="${khachHang.trangThai}" required>
+                        </div>
+                        <!-- Nút Submit -->
+                        <button type="submit" class="btn btn-primary btn-block">Update</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
