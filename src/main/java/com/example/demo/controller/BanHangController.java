@@ -86,5 +86,17 @@ public class BanHangController {
         model.addAttribute("hoaDonId", hoaDonId); // Ensure hoaDonId is added to the model for reuse in Thymeleaf templates
         return "/banhang/hoadon";
     }
-
+    @GetMapping("/banhang/hoadon/thanh-toan")
+    public String thanhToanHoaDon(@RequestParam("hoaDonId") int hoaDonId, Model model) {
+        HoaDon hoaDon = hoaDonService.getHoaDonById(hoaDonId);
+        System.out.println("Hoa Don ID: " + hoaDonId);
+        System.out.println("Hoa Don: " + hoaDon);
+        if (hoaDon != null) {
+            hoaDon.setTrangThai("Đã thanh toán");
+            hoaDonService.saveHoaDon(hoaDon);
+            System.out.println("Trang Thai: " + hoaDon.getTrangThai());
+        }
+        model.addAttribute("message", "Thanh toán thành công!");
+        return "/banhang/thanhcong";  // Chuyển hướng tới trang thanhcong.html
+    }
 }

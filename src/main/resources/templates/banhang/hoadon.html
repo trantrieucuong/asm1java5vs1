@@ -18,20 +18,46 @@
             <th>Trạng thái</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="invoice-items">
         <tr th:each="chiTiet : ${hoaDonChiTiets}">
             <td th:text="${chiTiet.chiTietSanPham.sanPham.tenSanPham}">Tên sản phẩm</td>
             <td th:text="${chiTiet.soLuongMua}">Số lượng</td>
             <td th:text="${chiTiet.giaBan}">Giá bán</td>
-            <td th:text="${chiTiet.tongTien}">Tổng tiền</td>
+            <td th:text="${chiTiet.tongTien}" class="tong-tien">Tổng tiền</td>
             <td th:text="${chiTiet.trangThai}">Trạng thái</td>
         </tr>
         </tbody>
+        <!-- Hàng mới cho tổng cộng -->
+        <tfoot>
+        <tr>
+            <td colspan="3" class="text-right"><strong>Tổng cộng:</strong></td>
+            <td id="total-amount">Tổng cộng</td>
+            <td></td>
+        </tr>
+        </tfoot>
     </table>
-    <a href="javascript:history.back()" class="btn btn-primary">tiếp tục mua</a>
+    <a href="javascript:history.back()" class="btn btn-primary">Tiếp tục mua</a>
+    <button id="btn-thanh-toan" class="btn btn-success">Thanh toán</button>
+    <input type="hidden" id="hoaDonId" th:value="${hoaDonId}"/>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let total = 0;
+        document.querySelectorAll('.tong-tien').forEach(function(element) {
+            total += parseFloat(element.textContent);
+        });
+        document.getElementById('total-amount').textContent = total.toFixed(2);
+
+        document.getElementById('btn-thanh-toan').addEventListener('click', function() {
+            if (confirm('Bạn có chắc chắn muốn thanh toán?')) {
+                const hoaDonId = document.getElementById('hoaDonId').value;
+                window.location.href = '/banhang/hoadon/thanh-toan?hoaDonId=' + hoaDonId;
+            }
+        });
+    });
+</script>
 </body>
 </html>
