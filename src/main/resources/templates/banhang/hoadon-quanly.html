@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Quản lý hóa đơn</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-$END$
+<div class="container">
+    <h2 class="my-4">Quản lý hóa đơn</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên khách hàng</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
+                <th>Ngày sửa</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="hoaDon, i : ${hoaDons}">
+                <td th:text="${i.count}"></td>
+                <td th:text="${hoaDon.khachHang.hoTen}"></td>
+                <td th:text="${hoaDon.diaChi}"></td>
+                <td th:text="${hoaDon.soDienThoai}"></td>
+                <td th:text="${hoaDon.trangThai}"></td>
+                <td th:text="${hoaDon.ngayTao}"></td>
+                <td th:text="${hoaDon.ngaySua}"></td>
+                <td>
+                    <a th:href="@{/banhang/hoadon/thanh-toan(hoaDonId=${hoaDon.id})}">
+                        <button type="button" class="btn btn-warning">Thanh toán</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

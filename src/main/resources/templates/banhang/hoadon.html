@@ -27,7 +27,6 @@
             <td th:text="${chiTiet.trangThai}">Trạng thái</td>
         </tr>
         </tbody>
-        <!-- Hàng mới cho tổng cộng -->
         <tfoot>
         <tr>
             <td colspan="3" class="text-right"><strong>Tổng cộng:</strong></td>
@@ -54,7 +53,8 @@
         document.getElementById('btn-thanh-toan').addEventListener('click', function() {
             if (confirm('Bạn có chắc chắn muốn thanh toán?')) {
                 const hoaDonId = document.getElementById('hoaDonId').value;
-                window.location.href = '/banhang/hoadon/thanh-toan?hoaDonId=' + hoaDonId;
+                const totalAmount = parseFloat(document.getElementById('total-amount').textContent);
+                window.location.href = `/api/payment/create_payment?amount=${totalAmount}&id=${hoaDonId}`;
             }
         });
     });

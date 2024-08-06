@@ -48,4 +48,5 @@ public class HoaDon {
     @Column(name = "so_dien_thoai")
     private String soDienThoai;
 
+
 }

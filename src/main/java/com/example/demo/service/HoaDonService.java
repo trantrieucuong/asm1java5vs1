@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.HoaDon;
 import com.example.demo.repos.HoaDonRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +32,15 @@ public class HoaDonService {
     }
     public HoaDon getLastSavedHoaDon() {
         return hoaDonRepository.findTopByOrderByIdDesc();
+    }
+    public List<HoaDon>getHoaDonByTrangThai(String trangThai) {
+        return hoaDonRepository.findByTrangThai(trangThai);
+    }
+    @Transactional
+    public void updateOrderStatus(int orderId, String status) {
+        HoaDon hoaDon = hoaDonRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found with ID: " + orderId));
+        hoaDon.setTrangThai(status);
+        hoaDonRepository.save(hoaDon);
     }
 }

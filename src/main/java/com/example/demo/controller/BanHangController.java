@@ -95,8 +95,17 @@ public class BanHangController {
             hoaDon.setTrangThai("Đã thanh toán");
             hoaDonService.saveHoaDon(hoaDon);
             System.out.println("Trang Thai: " + hoaDon.getTrangThai());
+
         }
         model.addAttribute("message", "Thanh toán thành công!");
         return "/banhang/thanhcong";  // Chuyển hướng tới trang thanhcong.html
     }
+    @GetMapping("/hoadon/quanly")
+    public String hoaDonQuanLy(Model model){
+        List<HoaDon> hoaDons = hoaDonService.getHoaDonByTrangThai("Chua thanh toán");
+        model.addAttribute("hoaDons", hoaDons);
+        return "/banhang/hoadon-quanly";
+    }
+
+
 }
